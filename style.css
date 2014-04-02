@@ -1,0 +1,17 @@
+.body{
+	
+}
+
+.character{
+	height: 50px;
+	width:40px;
+	position: absolute;
+	left: 100px;
+	top: 120px;
+}
+
+#j{
+	background:url('http://www.joustmultimedia.com/tutorials/spriting/j.png');
+	background-repeat:no-repeat;
+	background-position: 0 0;
+}
