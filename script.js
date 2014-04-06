@@ -84,7 +84,21 @@ function run_left(slide, left)
 	}
 }
 
+function jump(up, top){
+	console.log('Jump');
 
+	document.getElementById('j').style.backgroundPosition = '-160px 0px';
+
+	if(up && (document.getElementById('j').offsetTop > 20))
+	{
+		// if he is currently moving up, and he is more than 20 pixels from the top of the stage ...
+		top = top - (top * .1); // This gives us a slight arc in the jump, rather than a constant movement like running
+		document.getElementById('j').style.top = top+'px'; // Change his position
+		timer = setTimeout(function(){ jump(up, top); } ,60);
+	}else if(up){
+		
+	}
+}
 
 /*
 function run_right(slide, left)
