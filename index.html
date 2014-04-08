@@ -9,12 +9,13 @@
 	<div id="stage">
 		<div id="j" class="character"></div>
 	</div>
-	<input type="button" value="Run Right"
-	onclick="run_right(1, document.getElementById('j').offsetLeft);" />
 
-
-	<input type="button" value="Run Left"
-	onclick="run_left(1, document.getElementById('j').offsetLeft);" />
+	<tr>
+		<td><input type="button" value="Run Right" onclick="run_right(1, document.getElementById('j').offsetLeft);" /></td>
+		<td><input type="button" value="Stop Running" onclick="stop_running();"/></td>
+		<td><input type="button" value="Run Left" onclick="run_left(1, document.getElementById('j').offsetLeft);" /> </td>
+		<td><input type="button" value="Jump" onclick="jump(true, document.getElementById('j').offsetTop);"/></td>
+	</tr>
 
 	<!-- <input type="button" value="Run Right" onclick="run_right(1);" /> -->
 	

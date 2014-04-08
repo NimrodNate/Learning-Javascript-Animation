@@ -54,7 +54,7 @@ function run_left(slide, left)
 {
 	if ((left - 15) > 0)
 	{
-		left = left + 15; // incearse his left attribute by 15px
+		left = left - 15; // incearse his left attribute by 15px
 		document.getElementById('j').style.left = left+"px";
 
 		switch(slide){
@@ -92,11 +92,30 @@ function jump(up, top){
 	if(up && (document.getElementById('j').offsetTop > 20))
 	{
 		// if he is currently moving up, and he is more than 20 pixels from the top of the stage ...
-		top = top - (top * .1); // This gives us a slight arc in the jump, rather than a constant movement like running
+		top = top - (top * 0.1); // This gives us a slight arc in the jump, rather than a constant movement like running
 		document.getElementById('j').style.top = top+'px'; // Change his position
-		timer = setTimeout(function(){ jump(up, top); } ,60);
+		timer = setTimeout(function(){ jump(up, top); } ,60); // Then call the function again
+
 	}else if(up){
+
+		// if he is currently moving up, but he is almost at the top of the stage and needs to come back down...
+		up = false; // we switch the 'up' variable so he will be falling in the next loop 
+		timer = setTimeout(function(){ jump(up, top); } ,60);
+
+	}else if(!up && (document.getElementById('j').offsetTop < 115)){
 		
+		// if he is moving down, but is more than 5px from the ground, he will continue to fall...
+		top = top + (top * 1); // he is falling slightly a'celerate
+		document.getElementById('j').style.top = top + 'px';
+		timer = setTimeout(function(){jump(up,top);},60);
+	
+	}else{
+
+		//If he is moving down, and he is within 5px of the ground..
+		document.getElementById('j').style.top = '120px'; // Place him on the ground
+		document.getElementById('j').style.backgroundPosition = '0px 0px'; // return to standing sprite
+		// We do not call the loop anymore since he is standing still at this point
+
 	}
 }
 
